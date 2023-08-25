@@ -17,7 +17,7 @@
      </ul>
    </p>
     <p>Um exemplo introdutório introdutório pode ser visto no seguinte notebook:</p>
-    <p><a href="https://github.com/jjbaqueta/Algoritmos/blob/main/hello_world.ipynb">hello_world.ipynb</a></p>
+    <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/hello_world.ipynb">hello_world.ipynb</a></p>
     <p>Maiores detalhes sobre como executar códigos C no Jupyter Notebook podem ser encontrados <a href="https://www.youtube.com/watch?v=cWdU9unrlm0">aqui</a> (tutorial em vídeo).</p>
   </div>
   
