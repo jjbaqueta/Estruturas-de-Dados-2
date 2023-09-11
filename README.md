@@ -9,16 +9,10 @@
   <div>
     <h2>Notebooks em C</h2>
     <p>Os códigos neste repositório são apresentados por meio de notebooks. Um notebook permite a criação e compartilhamento de documentos que contêm ao mesmo tempo código interativo e textos explicativos. Os notebooks apresentados aqui podem ser baixados e executados no <a href="https://jupyter.org/">Jupyter Notebook</a>. Um tutorial de como acessar e instalar o Jupyter Notebook em sua máquina local pode ser encontrado <a href="https://medium.com/@pedrofullstack/introdu%C3%A7%C3%A3o-ao-jupyter-notebook-para-python-b2cf79cea31d#:~:text=Jupyter%20Notebook%20%C3%A9%20uma%20aplica%C3%A7%C3%A3o,c%C3%B3digo%20interativo%20e%20textos%20explicativos">aqui</a>.</p>
-   <p><strong>Importante</strong>: a execução dos códigos em C depende da instalação do Jupyter Notebook e do compilador <a href="https://gcc.gnu.org/">gcc</a>.</p>
-   <p>A execução de um notebook na sua máquina local irá produzir pelo menos dois arquivos:
-     <ul>
-       <li>arquivo.c (contém o código C descrito no notebook);</li>
-       <li>arquivo executável (programa que será executado).</li>
-     </ul>
-   </p>
-    <p>Um exemplo introdutório introdutório pode ser visto no seguinte notebook:</p>
-    <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/hello_world.ipynb">hello_world.ipynb</a></p>
-    <p>Maiores detalhes sobre como executar códigos C no Jupyter Notebook podem ser encontrados <a href="https://www.youtube.com/watch?v=cWdU9unrlm0">aqui</a> (tutorial em vídeo).</p>
+   <p>
+       <h3>Estruturas da dados implementadas:</h3>
+    <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/arvoreBB.ipynb">arvoreBB.ipynb</a></p>
+</p>
   </div>
   
   <div id="bibliografia">
