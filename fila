@@ -1,0 +1,176 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Fila\n",
+    "\n",
+    "Este arquivo contém a implementação de uma fila dinâmica homogênea. Cada elemento da fila possui um ponteiro genérico para o dado que será armazenado no nodo e um ponteiro para o próximo nodo na fila.\n",
+    "\n",
+    "O comando “%%file” é utilizado pelo python para criar o arquivo .c em sua máquina local (no diretório onde este notebook está salvo). O arquivo criado será nomeado de acordo com o identificador que aparece após o comando “%%file”."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Especificação do Heap:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Writing Nodo.h\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%file fila.c\n",
+    "\n",
+    "#include <stdio.h>\n",
+    "#include <stdlib.h>\n",
+    "\n",
+    "// Estrutura do nodo\n",
+    "typedef struct nodo {\n",
+    "    void *dado;             // ponteiro genérico para o dado armazenado no nodo.\n",
+    "    struct nodo* proximo;   // ponteiro para o próximo nodo.\n",
+    "} Nodo;\n",
+    "\n",
+    "// Estrutura da fila\n",
+    "typedef struct {\n",
+    "    Nodo* cabeca;\n",
+    "    Nodo* cauda;\n",
+    "} Fila;\n",
+    "\n",
+    "// Função para inicializar a fila.\n",
+    "Fila * criarFila() {\n",
+    "    Fila *fila = (Fila *) malloc(sizeof(Fila));\n",
+    "    fila->cabeca = NULL;\n",
+    "    fila->cauda = NULL;\n",
+    "    return fila;\n",
+    "}\n",
+    "\n",
+    "// Função para destruir uma fila\n",
+    "void destruirFila(Fila *fila) {\n",
+    "    while(fila->cabeca != NULL){\n",
+    "        Nodo *aux = fila->cabeca;\n",
+    "        fila->cabeca = fila->cabeca->proximo;\n",
+    "        free(aux);\n",
+    "    }\n",
+    "    free(fila);\n",
+    "}\n",
+    "\n",
+    "// Função para verificar se a fila está vazia.\n",
+    "int estaVazia(Fila* fila) {\n",
+    "    return fila->cabeca == NULL;\n",
+    "}\n",
+    "\n",
+    "// Função para enfileirar um elemento (dado).\n",
+    "void enqueue(Fila* fila, void *dado) {\n",
+    "    Nodo *novoNodo = (Nodo*) malloc(sizeof(Nodo));\n",
+    "    \n",
+    "    if (novoNodo == NULL) {\n",
+    "        printf(\"Falha ao alocar memória!\\n\");\n",
+    "    }\n",
+    "    else {\n",
+    "        novoNodo->dado = dado;\n",
+    "        novoNodo->proximo = NULL;\n",
+    "\n",
+    "        if (estaVazia(fila)) {\n",
+    "            fila->cabeca = novoNodo;\n",
+    "            fila->cauda = novoNodo;\n",
+    "        }\n",
+    "        else {\n",
+    "            fila->cauda->proximo = novoNodo;\n",
+    "            fila->cauda = novoNodo;\n",
+    "        }\n",
+    "    }\n",
+    "}\n",
+    "\n",
+    "// Função para desenfileirar um elemento (dado).\n",
+    "void * dequeue(Fila* fila) {\n",
+    "    if (estaVazia(fila)) {\n",
+    "        return NULL;\n",
+    "    }\n",
+    "    void *dado = fila->cabeca->dado;\n",
+    "    Nodo* aux = fila->cabeca;\n",
+    "\n",
+    "    // Existe apenas um nodo na fila\n",
+    "    if (fila->cabeca == fila->cauda) {\n",
+    "        fila->cabeca = NULL;\n",
+    "        fila->cauda = NULL;\n",
+    "    }   \n",
+    "    else {\n",
+    "        fila->cabeca = fila->cabeca->proximo;\n",
+    "    }\n",
+    "    free(aux);\n",
+    "    return dado;\n",
+    "}\n",
+    "\n",
+    "// Função para obter o elemento na cabeca da fila sem removê-lo.\n",
+    "void * peek(Fila* fila) {\n",
+    "    if (estaVazia(fila)) {\n",
+    "        return NULL;\n",
+    "    }\n",
+    "    return fila->cabeca->dado;\n",
+    "}\n",
+    "\n",
+    "// Exemplo de uso da pilha\n",
+    "int main() {\n",
+    "    Fila *fila = criarFila();\n",
+    "    int a = 10, b = 20, c = 30;\n",
+    "    \n",
+    "    // Enfileirando: \n",
+    "    enqueue(fila, &a);\n",
+    "    enqueue(fila, &b);\n",
+    "    enqueue(fila, &c);\n",
+    "\n",
+    "    // Desenfileirando: \n",
+    "    while (peek(fila) != NULL) {\n",
+    "        printf(\"%d \", *(int *) dequeue(fila));\n",
+    "    }\n",
+    "    printf(\"\\n\");\n",
+    "    destruirFila(fila);    \n",
+    "    return 0;\n",
+    "}\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Para compilar, você pode usar o seguinte comandos (Linux):\n",
+    "- COMPILAÇÃO: gcc fila.c -o exe\n",
+    "- EXECUÇÃO: ./exe"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
