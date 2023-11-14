@@ -13,6 +13,8 @@
        <h3>Estruturas da dados implementadas:</h3>
     <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/arvoreBB.ipynb">arvoreBB.ipynb</a></p>
     <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/maxHeap.ipynb">maxHeap.ipynb</a></p>
+    <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/pilha.ipynb">pilha.ipynb</a></p>
+    <p><a href="https://github.com/jjbaqueta/Estruturas-de-Dados-2/blob/main/fila.ipynb">fila.ipynb</a></p>
 </p>
   </div>
   
